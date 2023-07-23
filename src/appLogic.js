@@ -1,26 +1,46 @@
 
-
-function creaeToDo(title, description, duedate, priority) {
+function createToDoFactory(title, description, dueDate, priority) {
     const getTitle = () => title;
     const getDescription = () => description;
-    const getDueDate = () => duedate;
+    const getDueDate = () => dueDate;
     const getPriority = () => priority;
-
-    return { getTitle, getDescription, getDueDate, getPriority };
-}
-
-const projects = [];
-
-function newProject(projectName) {
-    projectName = []
-    //const createproject = (projectName) => projectName = [];
-    const addTodo = (addTask) => projectName.push(addTask)
-
-    projects.push(projectName)
-
-    return { addTodo };
-}
-
-const coding = creaeToDo("To-do", "build a project", "This week", "high");
-const dev = newProject("coding");
-dev.addTodo(coding)
+  
+    const markDone = () => {
+      done = true;
+    };
+  
+   let done = false;
+  
+    return {
+      getTitle,
+      getDescription,
+      getDueDate,
+      getPriority,
+      markDone,
+     isDone: () => done,
+    };
+  }
+  
+  function createProjectFactory(name) {
+    const todos = [];
+  
+    const addTodo = (todo) => {
+      todos.push(todo);
+    };
+  
+    const removeTodo = (todo) => {
+      const index = todos.indexOf(todo);
+      if (index !== -1) {
+        todos.splice(index, 1);
+      }
+    };
+  
+    return {
+      name,
+      todos,
+      addTodo,
+      removeTodo,
+    };
+  }
+  
+  export { createToDoFactory, createProjectFactory }
