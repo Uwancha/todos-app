@@ -47,10 +47,12 @@ main {
     height: 100%;
 }
 
-#title {
-    text-align: center;
+.name-duedate {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
     color: #41410d;
-    border-bottom: solid rgb(223, 244, 169) 2px;
 }
 
 #todo-list {
@@ -74,6 +76,70 @@ li {
     list-style: none;
     font-size: 1.2rem;
     font-weight: 600;
+}
+
+.add-task {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border: none;
+    background-color: #41410d;
+    color: aliceblue;
+    padding: .3rem;
+    font-weight: 700;
+}
+
+.form {
+    position: fixed;
+    display: flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 255, 255,.7);
+    height: 20rem;
+    width: 20rem;
+}
+
+.show {
+    position: fixed;
+    display: flex;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 255, 255,.7);
+    height: 100%;
+    width: 100%;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-color: rgb(139, 226, 226);
+    color: aliceblue;
+    padding: 3rem;
+}
+
+input {
+    background: transparent;
+    color: aliceblue;
+    padding: .5rem;
+    border: none;
+}
+
+input:focus {
+    border: none;
+}
+
+input[type="text"]::placeholder {
+    color: aliceblue;
+  }
+
+
+form > div {
+    display: flex;
+    flex-direction: column;
 }
 
 

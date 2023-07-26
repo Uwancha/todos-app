@@ -27,10 +27,43 @@
             </article>
         </section>
         <section class="tasks">
-            <h2 id="title">Home</h2>
-            <div id="todo-list">
-
+            <div class="name-duedate">
+                <h2 id="title"></h2>
+                <h2>Due Date</h2>
             </div>
+            <div id="todo-list">
+            </div>
+        </section>
+        <div class="add-task">Add Task</div>
+        <section class="form">
+            <form action="">
+                <div>
+                    <label for="task-title">Task title</label>
+                    <input type="text" id="task-title" name="task-title" placeholder="Enter task title">
+                </div>
+                <div>
+                    <label for="duedate">Due Date</label>
+                    <input type="date" id="duedate" name="duedate">
+                </div>
+                <div>
+                    <div><label for="">Priority</label></div>
+                    <div>
+                        <label for="low">Low</label>
+                        <input type="radio" id="low" name="priority">
+                        <label for="medium">Medium</label>
+                        <input type="radio" id="medium" name="priority">
+                        <label for="high">High</label>
+                        <input type="radio" id="high" name="priority">
+                    </div>
+                </div>
+                <div>
+                    <label for="description">Descrption</label>
+                    <input type="text" placeholder="task description">
+                </div>
+                <div>
+                    <button type="submit">Add Task</button>
+                </div>
+            </form>
         </section>
     </main>
 </body>
