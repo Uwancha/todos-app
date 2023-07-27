@@ -12,13 +12,13 @@
     <main>
         <section class="catagories">
             <article>
-                <h2>Home</h2>
+                <h2 id="home">Home</h2>
             </article>
             <article>
-                <h2>Today</h2>
+                <h2 id="today">Today</h2>
             </article>
             <article>
-                <h2>Week</h2>
+                <h2 id="week">Week</h2>
             </article>
             <article class="projects">
                 <h2>Projects</h2>
@@ -32,39 +32,41 @@
                 <h2>Due Date</h2>
             </div>
             <div id="todo-list">
+                
             </div>
+            <div id="add-task">Add Task</div>
         </section>
-        <div class="add-task">Add Task</div>
         <section class="form">
             <form action="">
                 <div>
                     <label for="task-title">Task title</label>
-                    <input type="text" id="task-title" name="task-title" placeholder="Enter task title">
+                    <input type="text" id="task-title" name="task-title" placeholder="Enter task title" required>
                 </div>
                 <div>
                     <label for="duedate">Due Date</label>
-                    <input type="date" id="duedate" name="duedate">
+                    <input type="date" id="duedate" name="duedate" required>
                 </div>
                 <div>
                     <div><label for="">Priority</label></div>
                     <div>
                         <label for="low">Low</label>
-                        <input type="radio" id="low" name="priority">
+                        <input type="radio" id="low" name="priority" required>
                         <label for="medium">Medium</label>
-                        <input type="radio" id="medium" name="priority">
+                        <input type="radio" id="medium" name="priority" checked>
                         <label for="high">High</label>
                         <input type="radio" id="high" name="priority">
                     </div>
                 </div>
                 <div>
                     <label for="description">Descrption</label>
-                    <input type="text" placeholder="task description">
+                    <input type="text" placeholder="task description" required>
                 </div>
-                <div>
+                <div >
                     <button type="submit">Add Task</button>
                 </div>
             </form>
         </section>
+            
     </main>
 </body>
 </html>

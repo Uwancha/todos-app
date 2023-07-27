@@ -78,37 +78,28 @@ li {
     font-weight: 600;
 }
 
-.add-task {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    border: none;
-    background-color: #41410d;
-    color: aliceblue;
-    padding: .3rem;
-    font-weight: 700;
-}
-
 .form {
+    display: none; 
+}  
+
+.form.visible {
     position: fixed;
     display: flex;
-    opacity: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgb(240, 255, 255,.7);
+    background-color: rgba(199, 123, 25, 0.7);
     height: 20rem;
     width: 20rem;
 }
 
-.show {
-    position: fixed;
-    display: flex;
-    opacity: 1;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(240, 255, 255,.7);
-    height: 100%;
-    width: 100%;
+
+#add-task {
+    background-color: #41410d;
+    color: aliceblue;
+    padding: .3rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 
@@ -141,6 +132,9 @@ form > div {
     display: flex;
     flex-direction: column;
 }
+
+
+
 
 
 @media (max-width: 767px) {
