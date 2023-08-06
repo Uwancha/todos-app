@@ -24,7 +24,7 @@ header {
 main {
     padding-top: 3rem;
     display: grid;
-    grid-template-columns: 3fr 7fr;
+    grid-template-columns: 2fr 8fr;
     grid-template-rows: 100%;
     height: 100%;
 }
@@ -72,11 +72,20 @@ main {
     justify-content: space-between;
 }
 
+
 li {
     list-style: none;
     font-size: 1.2rem;
     font-weight: 600;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
 }
+
+#project-list li:hover {
+    text-shadow: 1px 1px aliceblue;
+    background-color:  rgb(155, 255, 255);
+}
+
 
 .form {
     display: none; 
@@ -88,18 +97,30 @@ li {
     justify-content: center;
     align-items: center;
     background-color: rgba(199, 123, 25, 0.7);
-    height: 20rem;
+    height: 10rem;
     width: 20rem;
+    top: 15rem;
+    left: 30rem;
 }
 
 
 #add-task {
-    background-color: #41410d;
     color: aliceblue;
     padding: .3rem;
     font-weight: 700;
     margin-left: 2rem;
     margin-right: 2rem;
+}
+
+#add-task button {
+    border: none;
+    background-color:  rgb(139, 226, 226);
+    color: aliceblue;
+    font-weight: 800;
+}
+
+#add-task button:hover {
+    background-color: aqua;
 }
 
 
@@ -133,12 +154,31 @@ form > div {
     flex-direction: column;
 }
 
+.remove-form {
+    justify-self: flex-end;
+    align-self: flex-end;
+    color: black;
+    border-radius: 50%;
+    border: #41410d solid 4px;
+}
+h3{
+    text-align: center;
+}
 
+h2:hover {
+    text-shadow: 1px 1px aliceblue;
+}
 
 
 
 @media (max-width: 767px) {
     .catagories {
         padding-left: 1rem;
+    }
+
+    .form.visible {
+        height: 15rem;
+        width: 15rem;
+        left: 7rem;
     }
 }

@@ -2,12 +2,16 @@ import "./style.css"
 import {  renderProjectList, renderTodoList } from "./domModule";
 import { createToDoFactory, createProjectFactory } from "./appLogic";
 
+
 const addTask = document.querySelector("#add-task");
 const formContainer = document.querySelector(".form");
 const todoList = document.getElementById('todo-list');
+const removeForm = document.querySelector(".remove-form")
 
 
 const defaultProjectArrays = []
+const new_Projects = []
+
 
 const home = createProjectFactory("Home");
 const one = createToDoFactory("Coding", "Do coding", "Daily", "high");
@@ -24,7 +28,6 @@ defaultProjectArrays.push(home)
 renderTodoList(home.todos, home.name);
 
 const homeTasks = document.querySelector("#home");
-
 homeTasks.addEventListener("click", () => {
   const nameOfProject = document.getElementById("title");
   todoList.innerHTML = '';
@@ -32,8 +35,6 @@ homeTasks.addEventListener("click", () => {
 
   renderTodoList(home.todos, home.name)
 })
-
-
 
 
 const today = createProjectFactory("Today");
@@ -75,10 +76,17 @@ function addTaskTo () {
   const newTask = createToDoFactory(taskTitle,  description, dueDate, priority)
   const projectName = document.querySelector("#title").textContent;
   
-  const project = defaultProjectArrays.find(project => project.name == projectName);
-  project.addTodo(newTask);
-  console.log(home.todos)
+  let project = defaultProjectArrays.find(project => project.name == projectName);
+
+  if (project) {
+    project.addTodo(newTask);
+  
+  }else {
+    project = new_Projects.find(project => project.name == projectName);
+    project.addTodo(newTask);
+}
   todoList.innerHTML = '';
+  console.log(project.todos);
   renderTodoList(project.todos, project.name);
 }
 
@@ -89,32 +97,64 @@ addTask.addEventListener('click', () => {
 
 
 
-let form = document.querySelector('form');
-form.addEventListener('click', (event) => {
-  event.preventDefault();
-  if (form.checkValidity()) {
+const form = document.querySelector('form'); 
+form.addEventListener('submit', function(event) { 
+  event.preventDefault(); 
 
-  const taskTitle = document.querySelector('#task-title');
-  const dueDate = document.querySelector('#duedate');
-  const priority = document.querySelector('input[name="priority"]:checked');
-  const description = document.querySelector('input[placeholder="task description"]');
+  const createNewProject = document.querySelector('#project-select').value == 'new'; 
+  const newProjectName = document.querySelector('#project').value; 
+  if (createNewProject) { 
+    // Create new project 
+    const newProject = createProjectFactory(newProjectName); 
+    // Add task to new project 
+    const taskTitle = document.querySelector('#task-title').value; 
+    const dueDate = document.querySelector('#duedate').value;
+    const priority = document.querySelector('input[name="priority"]:checked').value;
+    const description = document.querySelector('input[placeholder="task description"]').value;
+  
+    const newTask = createToDoFactory(taskTitle, dueDate, priority, description);
+    newProject.addTodo(newTask); 
+    new_Projects.push(newProject);
+    renderProjectList(new_Projects);
 
-  addTaskTo();
-  formContainer.classList.remove("visible");
-  formContainer.classList.add("form");
+    formContainer.classList.remove("visible");
+    formContainer.classList.add("form");
 
   
-  taskTitle.value = ""
-  dueDate.value = ""
-  priority.value = ""
-  description.value = ""
-  }
-});
+    taskTitle.value = ""
+    dueDate.value = ""
+    priority.value = ""
+    description.value = ""
+  } 
+    else { 
+      // Add task to existing project 
+      const taskTitle = document.querySelector('#task-title');
+      const dueDate = document.querySelector('#duedate');
+      const priority = document.querySelector('input[name="priority"]:checked');
+      const description = document.querySelector('input[placeholder="task description"]');
+
+      addTaskTo();
+      formContainer.classList.remove("visible");
+      formContainer.classList.add("form");
+
+  
+      taskTitle.value = ""
+      dueDate.value = ""
+      priority.value = ""
+      description.value = ""
+    } 
+  }) 
+
+document.querySelector('#project-select').addEventListener('change', () => { 
+  const showNewProject = document.querySelector('#project-select').value == 'new'; 
+  document.querySelector('#new-project').style.display = showNewProject ? 'block' : 'none'; 
+})
 
 
-
-
-
+removeForm.addEventListener("click", () => {
+  formContainer.classList.remove("visible");
+  formContainer.classList.add("form");
+})
 
 
  

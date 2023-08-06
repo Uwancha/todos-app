@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>To Do Lists</h1>
+        <h1>To-Do...</h1>
     </header>
     <main>
         <section class="catagories">
@@ -34,10 +34,15 @@
             <div id="todo-list">
                 
             </div>
-            <div id="add-task">Add Task</div>
+            <div id="add-task">
+                <button>Add Task</button>
+            </div>
         </section>
         <section class="form">
             <form action="">
+                <div class="remove-form">
+                    <h3>X</h3>
+                </div>
                 <div>
                     <label for="task-title">Task title</label>
                     <input type="text" id="task-title" name="task-title" placeholder="Enter task title" required>
@@ -61,7 +66,22 @@
                     <label for="description">Descrption</label>
                     <input type="text" placeholder="task description" required>
                 </div>
+
+                <div> 
+                    <label>Add to existing project or create new?</label>
+                     <select id="project-select"> 
+                        <option value="existing">Add to existing project</option>
+                        <option value="new">Create new project</option>  
+                    </select> 
+                </div>
+
+                <div id="new-project" style="display:none">
+                    <label for="project">New Project Name</label>   
+                    <input type="text" id="project" name="project">      
+                </div>
+
                 <div >
+
                     <button type="submit">Add Task</button>
                 </div>
             </form>
