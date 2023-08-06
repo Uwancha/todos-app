@@ -1,13 +1,6 @@
 
 const todoList = document.getElementById('todo-list');
 
-function renderDefaultTasks(tasks) {
-  tasks.forEach((task) => {
-    renderTodoList(task);
-})
-}
-
-
 function renderProjectList(projects) {
     const projectList = document.getElementById('project-list');
     projectList.innerHTML = '';
@@ -15,28 +8,38 @@ function renderProjectList(projects) {
     projects.forEach((project) => {
         const projectElement = document.createElement('li');
         projectElement.textContent = project.name;
+        
         projectElement.addEventListener('click', () => {
             todoList.innerHTML = '';
-            project.todos.forEach((todo) => {
-                renderTodoList(todo);
-            })
+            
+            
+            renderTodoList(project.todos, project.name);
+            
         });
         projectList.appendChild(projectElement);
     });
 }
 
 
+function renderTodoList(tasks, name) {
+    const nameOfProject = document.getElementById("title");
+    nameOfProject.textContent = name;
+    
+    
+    const todoList = document.querySelector("#todo-list");
 
-function renderTodoList(todo) {
+    tasks.forEach((task) => {
+        
 
     const todoContainer = document.createElement("div");
     const todoTitle = document.createElement("li");
     const todoDueDate = document.createElement("li");
-    
-    console.log(todo.getTitle())
-    todoTitle.textContent = todo.getTitle();
-    todoDueDate.textContent = todo.getDueDate();
-    if (todo.isDone()) {
+
+   
+    console.log(task.getTitle())
+    todoTitle.textContent = task.getTitle();
+    todoDueDate.textContent = task.getDueDate();
+    if (task.isDone()) {
       todoContainer.classList.add("done");
     }
 
@@ -46,7 +49,8 @@ function renderTodoList(todo) {
     todoContainer.classList.add("todo-container");
 
     todoList.appendChild(todoContainer);
-
+    });
 } 
 
-export { renderDefaultTasks, renderProjectList, renderTodoList };
+
+export { renderProjectList, renderTodoList };
