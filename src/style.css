@@ -69,11 +69,21 @@ main {
 
 .todo-container {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.todo-container li {
+    list-style: none;
+    font-weight: 600;
+}
+
+#due-date {
+    margin-left: auto;
 }
 
 
-li {
+#project-list li {
     list-style: none;
     font-size: 1.2rem;
     font-weight: 600;
@@ -96,7 +106,6 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(199, 123, 25, 0.7);
     height: 10rem;
     width: 20rem;
     top: 15rem;
@@ -130,7 +139,7 @@ form {
     gap: .5rem;
     background-color: rgb(139, 226, 226);
     color: aliceblue;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 input {
@@ -157,9 +166,6 @@ form > div {
 .remove-form {
     justify-self: flex-end;
     align-self: flex-end;
-    color: black;
-    border-radius: 50%;
-    border: #41410d solid 4px;
 }
 h3{
     text-align: center;
@@ -167,6 +173,21 @@ h3{
 
 h2:hover {
     text-shadow: 1px 1px aliceblue;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+.check {
+    border: #e6e6dd solid 2px;
+    border-radius: 2px;
+    opacity: .2;
+}
+
+.done {
+    opacity: 1;
 }
 
 

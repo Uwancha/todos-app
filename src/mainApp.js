@@ -3,6 +3,7 @@ import {  renderProjectList, renderTodoList } from "./domModule";
 import { createToDoFactory, createProjectFactory } from "./appLogic";
 
 
+
 const addTask = document.querySelector("#add-task");
 const formContainer = document.querySelector(".form");
 const todoList = document.getElementById('todo-list');
@@ -23,7 +24,7 @@ home.addTodo(one);
 home.addTodo(two);
 home.addTodo(three);
 home.addTodo(four);
-one.markDone();
+//one.markDone();
 defaultProjectArrays.push(home)
 renderTodoList(home.todos, home.name);
 
@@ -46,6 +47,7 @@ todaysTasks.addEventListener("click", () => {
   const nameOfProject = document.getElementById("title");
   todoList.innerHTML = '';
   nameOfProject.textContent = today.name;
+
 
   renderTodoList(today.todos, today.name)
 })
@@ -144,6 +146,10 @@ form.addEventListener('submit', function(event) {
       description.value = ""
     } 
   }) 
+
+
+
+
 
 document.querySelector('#project-select').addEventListener('change', () => { 
   const showNewProject = document.querySelector('#project-select').value == 'new'; 

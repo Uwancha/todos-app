@@ -5,9 +5,8 @@ function createToDoFactory(title, description, dueDate, priority) {
     const getDueDate = () => dueDate;
     const getPriority = () => priority;
   
-    const markDone = () => {
-      done = true;
-    };
+    const markDone = (value) => done = value;
+    
   
    let done = false;
   
