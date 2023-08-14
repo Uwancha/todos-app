@@ -1,8 +1,10 @@
+import { format } from "date-fns";
+
 
 function createToDoFactory(title, description, dueDate, priority) {
     const getTitle = () => title;
     const getDescription = () => description;
-    const getDueDate = () => dueDate;
+    const getDueDate = () => format(dueDate, 'yyyy-MM-dd');
     const getPriority = () => priority;
   
     const markDone = (value) => done = value;

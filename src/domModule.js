@@ -1,6 +1,6 @@
 import delteIcon from "./images/trash_6460112.png";
 import checkIcon from "./images/check_1828643.png"
-
+import { formatDistanceToNow } from "date-fns";
 
 const todoList = document.getElementById('todo-list');
 
@@ -44,7 +44,7 @@ function renderTodoList(tasks, name) {
     console.log(task.getTitle())
     todoTitle.textContent = task.getTitle();
     todoTitle.setAttribute("id", "todo-title");
-    todoDueDate.textContent = task.getDueDate();
+    todoDueDate.textContent = formatDistanceToNow(task.getDueDate(), { addSuffix: true });
     todoDueDate.setAttribute("id", "due-date")
     checkTodo.src = checkIcon;
     checkTodo.classList.add("check");
