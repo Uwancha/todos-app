@@ -1,7 +1,7 @@
 import "./style.css"
 import {  renderProjectList, renderTodoList } from "./domModule";
 import { createToDoFactory, createProjectFactory } from "./appLogic";
-
+import parseISO from "date-fns/parseISO";
 
 
 const addTask = document.querySelector("#add-task");
@@ -15,16 +15,16 @@ const new_Projects = []
 
 
 const home = createProjectFactory("Home");
-const one = createToDoFactory("Coding", "Do coding", "Daily", "high");
-const two = createToDoFactory("Reading", "Read 10 pages", "Daily", "high");
-const three = createToDoFactory("Exercise", "Do exercises", "Daily", "high");
-const four = createToDoFactory("Meditate", "Meditating", "Daily", "high");
+const one = createToDoFactory("Coding", "Do coding", parseISO('2023-08-08'), "high");
+const two = createToDoFactory("Reading", "Read 10 pages", parseISO('2023-08-08'), "high");
+const three = createToDoFactory("Exercise", "Do exercises", parseISO('2023-08-08'), "high");
+const four = createToDoFactory("Meditate", "Meditating", parseISO('2023-08-08'), "high");
 
 home.addTodo(one);
 home.addTodo(two);
 home.addTodo(three);
 home.addTodo(four);
-//one.markDone();
+
 defaultProjectArrays.push(home)
 renderTodoList(home.todos, home.name);
 
@@ -48,7 +48,6 @@ todaysTasks.addEventListener("click", () => {
   todoList.innerHTML = '';
   nameOfProject.textContent = today.name;
 
-
   renderTodoList(today.todos, today.name)
 })
 
@@ -66,14 +65,12 @@ weeksTasks.addEventListener("click", () => {
 })
 
 
-
 function addTaskTo () {
   const taskTitle = document.querySelector('#task-title').value;
   const dueDate = document.querySelector('#duedate').value;
   const priority = document.querySelector('input[name="priority"]:checked').value;
   const description = document.querySelector('input[placeholder="task description"]').value;
   
-  console.log(taskTitle, dueDate, priority, description);
 
   const newTask = createToDoFactory(taskTitle,  description, dueDate, priority)
   const projectName = document.querySelector("#title").textContent;
@@ -98,7 +95,6 @@ addTask.addEventListener('click', () => {
 })
 
 
-
 const form = document.querySelector('form'); 
 form.addEventListener('submit', function(event) { 
   event.preventDefault(); 
@@ -106,9 +102,8 @@ form.addEventListener('submit', function(event) {
   const createNewProject = document.querySelector('#project-select').value == 'new'; 
   const newProjectName = document.querySelector('#project').value; 
   if (createNewProject) { 
-    // Create new project 
+     
     const newProject = createProjectFactory(newProjectName); 
-    // Add task to new project 
     const taskTitle = document.querySelector('#task-title').value; 
     const dueDate = document.querySelector('#duedate').value;
     const priority = document.querySelector('input[name="priority"]:checked').value;
@@ -129,7 +124,7 @@ form.addEventListener('submit', function(event) {
     description.value = ""
   } 
     else { 
-      // Add task to existing project 
+      
       const taskTitle = document.querySelector('#task-title');
       const dueDate = document.querySelector('#duedate');
       const priority = document.querySelector('input[name="priority"]:checked');
@@ -146,9 +141,6 @@ form.addEventListener('submit', function(event) {
       description.value = ""
     } 
   }) 
-
-
-
 
 
 document.querySelector('#project-select').addEventListener('change', () => { 

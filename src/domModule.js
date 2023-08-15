@@ -1,6 +1,6 @@
 import delteIcon from "./images/trash_6460112.png";
-import checkIcon from "./images/check_1828643.png"
-import { formatDistanceToNow } from "date-fns";
+import checkIcon from "./images/check_1828643.png";
+import { validateTodo } from "./appLogic";
 
 const todoList = document.getElementById('todo-list');
 
@@ -17,8 +17,8 @@ function renderProjectList(projects) {
             
             
             renderTodoList(project.todos, project.name);
-            
         });
+
         projectList.appendChild(projectElement);
     });
 }
@@ -31,29 +31,27 @@ function renderTodoList(tasks, name) {
     
     const todoList = document.querySelector("#todo-list");
 
+
     tasks.forEach((task) => {
         
-
+    if (validateTodo(task)) {
     const todoContainer = document.createElement("div");
     const todoTitle = document.createElement("li");
     const todoDueDate = document.createElement("li");
     const checkTodo = document.createElement("img");
     const removeTodo = document.createElement("img")
 
-   
-    console.log(task.getTitle())
+    
     todoTitle.textContent = task.getTitle();
     todoTitle.setAttribute("id", "todo-title");
-    todoDueDate.textContent = formatDistanceToNow(task.getDueDate(), { addSuffix: true });
+    todoDueDate.textContent = task.getDueDate(); 
     todoDueDate.setAttribute("id", "due-date")
     checkTodo.src = checkIcon;
     checkTodo.classList.add("check");
     removeTodo.src = delteIcon;
     removeTodo.setAttribute("id", "remove-todo");
 
-   
-
-
+    
     todoContainer.appendChild(checkTodo)
     todoContainer.appendChild(todoTitle);
     todoContainer.appendChild(todoDueDate);
@@ -82,6 +80,7 @@ function renderTodoList(tasks, name) {
     if (task.isDone()) {
         checkTodo.classList.add('done');
     }
+} 
 }) 
 
 }
